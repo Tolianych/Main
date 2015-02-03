@@ -1,0 +1,53 @@
+2015-01-19 11:47:37,359 DEBUG ---TESTCASE 1---
+2015-01-19 11:47:37,359 DEBUG Creating file
+2015-01-19 11:47:37,359 DEBUG Checking file owner
+2015-01-19 11:47:37,359 DEBUG File owner is User1
+2015-01-19 11:47:37,359 DEBUG Changing file owner
+2015-01-19 11:47:37,373 DEBUG File owner is User2
+2015-01-19 11:47:37,373 DEBUG Changing file owner back to User1
+2015-01-19 11:47:37,388 DEBUG File owner is User1
+2015-01-19 11:47:37,388 DEBUG TESTCASE1 completed successfully!
+2015-01-19 11:47:37,389 DEBUG ---TESTCASE 2---
+2015-01-19 11:47:37,389 DEBUG Creating file
+2015-01-19 11:47:37,389 DEBUG Applying chmode
+2015-01-19 11:47:37,400 DEBUG Changing file owner
+2015-01-19 11:47:37,412 DEBUG --Prerequisits created--
+2015-01-19 11:47:37,412 DEBUG Trying to open file
+2015-01-19 11:47:37,412 DEBUG Impossible to open File
+2015-01-19 11:47:37,412 DEBUG Applying chmod 777
+2015-01-19 11:47:37,424 DEBUG Trying to open file
+2015-01-19 11:47:37,424 DEBUG File is opened
+2015-01-19 11:47:37,424 DEBUG TESTCASE2 completed successfully!
+2015-01-19 11:47:37,425 DEBUG ---TESTCASE 3---
+2015-01-19 11:47:37,425 DEBUG Creating file
+2015-01-19 11:47:37,425 DEBUG Applying chmode
+2015-01-19 11:47:37,437 DEBUG Changing file owner
+2015-01-19 11:47:37,449 DEBUG --Prerequisits created--
+2015-01-19 11:47:37,449 DEBUG Trying to modify file
+2015-01-19 11:47:37,449 DEBUG Impossible to open File
+2015-01-19 11:47:37,449 DEBUG Applying chmod 776
+2015-01-19 11:47:37,461 DEBUG Trying to open file
+2015-01-19 11:47:37,461 DEBUG File is modified
+2015-01-19 11:47:37,461 DEBUG TESTCASE3 completed successfully!
+2015-01-19 11:47:37,462 DEBUG ---TESTCASE 4---
+2015-01-19 11:47:37,462 DEBUG Creating file
+2015-01-19 11:47:37,462 DEBUG Applying chmode
+2015-01-19 11:47:37,475 DEBUG Changing file owner
+2015-01-19 11:47:37,489 DEBUG --Prerequisits created--
+2015-01-19 11:47:37,489 DEBUG Trying to execute file
+2015-01-19 11:47:37,489 DEBUG Impossible to execute File
+2015-01-19 11:47:37,489 DEBUG Applying chmod 777
+2015-01-19 11:47:37,503 DEBUG Trying to open file
+2015-01-19 11:47:37,503 DEBUG File is executed
+2015-01-19 11:47:37,504 DEBUG TESTCASE4 completed successfully!
+2015-01-19 11:47:37,504 DEBUG ---TESTCASE 5---
+2015-01-19 11:47:37,504 DEBUG Creating file
+2015-01-19 11:47:37,504 DEBUG Applying chmode
+2015-01-19 11:47:37,518 DEBUG Changing file owner
+2015-01-19 11:47:37,535 DEBUG --Prerequisits created--
+2015-01-19 11:47:37,535 DEBUG Trying to modify file
+2015-01-19 11:47:37,535 DEBUG Impossible to open File
+2015-01-19 11:47:37,535 DEBUG Applying setfacl
+2015-01-19 11:47:37,549 DEBUG Trying to open file
+2015-01-19 11:47:37,549 DEBUG File is modified
+2015-01-19 11:47:37,549 DEBUG TESTCASE5 completed successfully!
