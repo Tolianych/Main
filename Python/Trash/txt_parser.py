@@ -5,7 +5,7 @@ Created on Jan 26, 2015
 '''
 strings = {}
 string_number = 0
-content = open('/home/tolianych/pgadmin.log').readlines()
+content = open('/home/botyan/pgadmin.log')
 for line in content:
     itog = []
     date_time = line[:19]
