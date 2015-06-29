@@ -1,6 +1,10 @@
 '''
 Created on Apr 4, 2015
 
+sudo pip install google_translate_api
+sudo apt-get install python-tk
+sudo apt-get install python-virtkey
+
 @author: tolianych
 '''
 import google_translate_api as api
