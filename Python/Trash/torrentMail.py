@@ -1,3 +1,4 @@
+import os
 import email
 import transmissionrpc
 from imaplib import IMAP4_SSL
@@ -36,5 +37,6 @@ for i in uids:
 if fileName:
     client = transmissionrpc.Client('192.168.1.2', port=9091, user='transmission', password='transmission')
     client.add_torrent('file:///home/tolianych/%s' % str(fileName))
+    os.remove(fileName)
 else:
     print 'There is no new torrents.'
