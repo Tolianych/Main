@@ -1,4 +1,5 @@
 import email
+import transmissionrpc
 from imaplib import IMAP4_SSL
 
 # log in and select the inbox
@@ -10,6 +11,7 @@ mail.select('TORRENTS')
 _, data = mail.uid('search', None, 'ALL')
 uids = data[0].split()
 
+fileName = None
 # read messages
 for i in uids:
     _, data = mail.uid('fetch', i, '(RFC822)')
@@ -23,10 +25,16 @@ for i in uids:
             if part.get('Content-Disposition') is None:
                 continue
             # save the attachment in the program directory
-            filename = part.get_filename()
-            with open(filename, 'wb') as f:
+            fileName = part.get_filename()
+            with open(fileName, 'wb') as f:
                 f.write(part.get_payload(decode=True))
-            print '%s saved!' % filename
+            print '%s saved!' % fileName
     mail.uid('store', i, '+FLAGS', '\\Deleted')
     mail.expunge()
     print 'Done!'
+
+if fileName:
+    client = transmissionrpc.Client('192.168.1.2', port=9091, user='transmission', password='transmission')
+    client.add_torrent('file:///home/tolianych/%s' % str(fileName))
+else:
+    print 'There is no new torrents.'
