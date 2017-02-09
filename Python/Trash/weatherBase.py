@@ -40,7 +40,10 @@ class PogodaByParcer(object):
                                                        int(dataLine[0]))
                 if dateString not in self.monthTempData.iterkeys():
                     self.monthTempData[dateString] = {}
-                self.monthTempData[dateString][dataLine[1]] = dataLine[2].lstrip('+')
+                    self.monthTempData[dateString][dataLine[1]] = ','.join((dataLine[2].lstrip('+'),  # Temperature
+                                                                            dataLine[5],              # Weather fenomena
+                                                                            dataLine[6],              # Cloudiness
+                                                                            str(int(int(dataLine[9]) * 0.75006375541921))))  # Pressure (1 hPa = 0.75006375541921 mmHg)
         return self.monthTempData
 
 
@@ -77,9 +80,20 @@ def getMonthData(url):
     parcer.unzipArchive()
     return parcer.parceCsv()
 
+def insertIntoDb(dbName, monthDataDict):
+    c = DbConnector(dbName)
+    c.connect()
+    c.createTableWeather()
+    for date in monthDataDict.iterkeys():
+        c.fillRow(date,
+                  monthDataDict[date]['03:00'],
+                  monthDataDict[date]['09:00'],
+                  monthDataDict[date]['15:00'],
+                  monthDataDict[date]['21:00'])
+
 if __name__ == '__main__':
     url = URL.format('2016', '2016-2')
     monthData = getMonthData(url)
     print monthData
-    # c = DbConnector('weather.db')
-    # c.connect()
+    # insertIntoDb('weather.db')
+
