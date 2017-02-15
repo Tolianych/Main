@@ -93,6 +93,10 @@ class DbConnector(object):
             print row
         print 'Finish!'
 
+    def getSelect(self, sql):
+        self.cur.execute(sql)
+        return self.cur.fetchall()
+
     def __del__(self):
         if self.con:
             self.con.commit()
@@ -116,20 +120,22 @@ if __name__ == '__main__':
     # monthData = getMonthData(url)
     # print monthData
 
-    c = DbConnector('weather.db')
-    c.connect()
-    c.createTableWeather()
-    for y in YEARS:
-        print 'Starting to process year %s' % y
-        for m in MONTHS:
-            url = URL.format(y, '%s-%s' % (y, str(m)))
-            monthData = getMonthData(url)
-            for dayWeather in monthData:
-                c.fillRow(*dayWeather)
-
     # c = DbConnector('weather.db')
     # c.connect()
-    # c.getRows()
+    # c.createTableWeather()
+    # for y in YEARS:
+    #     print 'Starting to process year %s' % y
+    #     for m in MONTHS:
+    #         url = URL.format(y, '%s-%s' % (y, str(m)))
+    #         monthData = getMonthData(url)
+    #         for dayWeather in monthData:
+    #             c.fillRow(*dayWeather)
+
+    c = DbConnector('weather.db')
+    c.connect()
+    res = c.getSelect('SELECT T FROM Weather WHERE Date LIKE "201_-02-15-15:00"')
+    print [t[0] for t in res]
+    # print c.getSelect("SELECT name FROM sqlite_master WHERE type='table';")
 
 
     # insertIntoDb('weather.db', monthData)
